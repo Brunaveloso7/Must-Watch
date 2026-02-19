@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Must-Watch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🎬 Must-Watch</h1>
+
+    <form method="POST">
+        <input type="text" name="filme" placeholder="Digite um filme" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul>
+        {% for filme in filmes %}
+            <li>
+                {{ filme }}
+                <div>
+                    <a href="/editar/{{ loop.index0 }}">✏️</a>
+                    <a href="/deletar/{{ loop.index0 }}">🗑️</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
